@@ -59,7 +59,9 @@ const StyledButton = styled(Button)`
     box-shadow: none !important;
     color: ${theme.base};
   }
-  border-color: ${theme.blue2};
+  border-color: ${({ bordercolor }: ButtonProps) => {
+    return bordercolor ? bordercolor : "none"
+  }};
 
   border-radius: ${({ borderradius, noradius }: ButtonProps) => {
     return noradius ? "none" : borderradius ? borderradius : "100px"
@@ -101,6 +103,12 @@ const StyledButton = styled(Button)`
   min-height: ${({ minheight }: ButtonProps) => {
     return minheight && `${minheight}px`
   }};
+
+  &:hover {
+    border-color: ${({ bordercolor }: ButtonProps) => {
+      return bordercolor ? bordercolor : "none"
+    }};
+  }
 `
 
 export const ButtonComponent: React.FC<ButtonProps> = ({

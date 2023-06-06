@@ -113,6 +113,7 @@ const RequiredLabel = styled.div`
   border: 1px solid #ffa39e;
   border-radius: 2px;
   align-items: center;
+  padding: 5px;
 `
 
 const TextField: React.FC<TextFieldProps> = React.forwardRef((props, ref) => {
@@ -149,7 +150,7 @@ const TextField: React.FC<TextFieldProps> = React.forwardRef((props, ref) => {
             {label && (
               <LabelContainer>
                 <Label>{label}</Label>
-                {required && <RequiredLabel>{"必須"}</RequiredLabel>}
+                {required && <RequiredLabel>{"Required"}</RequiredLabel>}
               </LabelContainer>
             )}
             <InputStyled {...rest} type={"password"} />
@@ -165,7 +166,7 @@ const TextField: React.FC<TextFieldProps> = React.forwardRef((props, ref) => {
             {label && (
               <LabelContainer>
                 <Label>{label}</Label>
-                {required && <RequiredLabel>{"必須"}</RequiredLabel>}
+                {required && <RequiredLabel>{"Required"}</RequiredLabel>}
               </LabelContainer>
             )}
             <InputStyled
@@ -188,7 +189,7 @@ const TextField: React.FC<TextFieldProps> = React.forwardRef((props, ref) => {
             {label && (
               <LabelContainer>
                 <Label>{label}</Label>
-                {required && <RequiredLabel>{"必須"}</RequiredLabel>}
+                {required && <RequiredLabel>{"Required"}</RequiredLabel>}
               </LabelContainer>
             )}
             <InputStyled
@@ -211,7 +212,7 @@ const TextField: React.FC<TextFieldProps> = React.forwardRef((props, ref) => {
             {label && (
               <LabelContainer>
                 <Label>{label}</Label>
-                {required && <RequiredLabel>{"必須"}</RequiredLabel>}
+                {required && <RequiredLabel>{"Required"}</RequiredLabel>}
               </LabelContainer>
             )}
             <InputStyled

@@ -146,6 +146,7 @@ const FeaturedPost: React.FC = () => {
               <span>{"3 min read"}</span>
             </div>
           </div>
+          <div className={"scrollDown"}></div>
         </div>
       </div>
     </FeaturedPostWrapper>
