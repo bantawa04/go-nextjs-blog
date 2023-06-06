@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import { GlobalStyles } from "../utils"
 import "../utils/css-imports"
 import { setCurrentScreen, logEvent } from "firebase/analytics"
+import Head from "next/head"
 
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
   Sentry.init({
@@ -45,6 +46,20 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      <Head>
+        <link rel={"preconnect"} href={"https://fonts.googleapis.com"} />
+        <link
+          rel={"preconnect"}
+          href={"https://fonts.gstatic.com"}
+          crossOrigin={"true"}
+        />
+        <link
+          href={
+            "https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+          }
+          rel={"stylesheet"}
+        ></link>
+      </Head>
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
