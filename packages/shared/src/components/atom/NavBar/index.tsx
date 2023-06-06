@@ -19,9 +19,11 @@ const NavBarWrapper = styled.div`
       max-height: 70px;
       width: auto;
     }
+    margin-right: 20px;
   }
 `
 const HamburgerButton = styled(Button)`
+  margin-left: 20px;
   cursor: pointer;
   height: 56px;
   width: 56px;
@@ -29,6 +31,7 @@ const HamburgerButton = styled(Button)`
   display: grid;
   place-items: center;
   border-radius: 50%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   &:hover {
     border-color: transparent !important;
     color: #616161 !important;

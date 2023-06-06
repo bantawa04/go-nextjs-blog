@@ -45,7 +45,7 @@ const PostCardWrapper = styled.div`
       color: #f6f9fc;
       font-size: 1.65rem;
       cursor: pointer;
-      line-height: 1.2em;
+      line-height: 1.3em;
       font-family: "Domine", serif;
       font-weight: normal;
     }
@@ -54,6 +54,7 @@ const PostCardWrapper = styled.div`
         color: #f6f9fc;
         margin-left: 0.5rem;
         font-size: 14px;
+        font-weight: 700;
       }
     }
     &__details {
