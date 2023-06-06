@@ -1,9 +1,9 @@
 {
-  "name": "consumer",
+  "name": "admin",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next -p $CONSUMER_PORT",
+    "dev": "next -p $ADMIN_PORT",
     "build": "next build",
     "start": "next start"
   },

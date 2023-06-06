@@ -1,9 +1,9 @@
 {
-  "name": "owner",
+  "name": "user",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next -p $OWNER_PORT",
+    "dev": "next -p $USER_PORT",
     "build": "next build",
     "start": "next start"
   },

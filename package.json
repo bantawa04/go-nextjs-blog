@@ -30,8 +30,8 @@
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
     "rimraf": "./node_modules/rimraf/bin.js",
-    "package:owner": "node -r ./dotenv.config.js node_modules/lerna/dist/cli.js run --scope owner --stream dev",
-    "package:consumer": "node -r ./dotenv.config.js node_modules/lerna/dist/cli.js run --scope consumer --stream dev",
+    "package:admin": "node -r ./dotenv.config.js node_modules/lerna/dist/cli.js run --scope admin --stream dev",
+    "package:user": "node -r ./dotenv.config.js node_modules/lerna/dist/cli.js run --scope user --stream dev",
     "test": "jest --watch",
     "start": "next start -p 8080",
     "local:start": "node -r ./dotenv.config.js node_modules/lerna/dist/cli.js run --parallel dev",
