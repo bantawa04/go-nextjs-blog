@@ -1,3 +1,4 @@
+import { FacebookOutlined, TwitterOutlined } from "@ant-design/icons"
 import React from "react"
 import styled from "styled-components"
 
@@ -20,12 +21,15 @@ const FeaturedPostWrapper = styled.div`
   }
 
   .contentWrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff; /* Adjust the text color */
+    position: relative;
+    color: #f6f9fc;
+    height: 100%;
+    width: 100%;
+    .postTitle {
+      font-size: 2.8rem;
+      line-height: 1.3rem;
+      font-family: "Domine", serif;
+    }
   }
 `
 
@@ -33,7 +37,23 @@ const FeaturedPost: React.FC = () => {
   return (
     <FeaturedPostWrapper>
       <div className={"overlay"}></div>
-      <div className={"contentWrapper"}></div>
+      <div className={"contentWrapper"}>
+        <div className={"social"}>
+          <div className={"postCategory"}>{"Filed in Blog Category"}</div>
+          <div className={"share"}>
+            <FacebookOutlined />
+            <TwitterOutlined />
+          </div>
+        </div>
+        <div className={"postDetails"}>
+          <div className={"postTitle"}>{"Featured Post Title"}</div>
+          <div className={"postMetaWrapper"}>
+            <div className={"postMetaWrapper__author"}></div>
+            <div className={"postMetaWrapper__comments"}></div>
+            <div className={"postMetaWrapper__minRead"}></div>
+          </div>
+        </div>
+      </div>
     </FeaturedPostWrapper>
   )
 }
