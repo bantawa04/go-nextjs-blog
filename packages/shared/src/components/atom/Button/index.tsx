@@ -1,133 +1,304 @@
-import { ReactNode } from "react"
 import styled from "styled-components"
-import { theme } from "../../../theme"
 import { Button } from "antd"
 
-type ButtonType = "primary" | "link"
 export interface ButtonProps {
-  children?: React.ReactNode
-  htmlType?: "button" | "submit" | "reset"
-  type?: ButtonType
-  width?: string
-  block?: boolean
-  padding?: string
-  loading?: boolean
-  disabled?: boolean
-  icon?: ReactNode
-  minheight?: number
-  minwidth?: number
-  boxshadow?: string
-  background?: string
-  borderradius?: string
-  noradius?: boolean
-  typography?: any
-  color?: string
-  fontSize?: string
-  bold?: boolean
-  margin?: string
   // eslint-disable-next-line no-unused-vars
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  bordercolor?: string
+  type: "primary" | "success" | "warning" | "danger" | "info"
+  children: React.ReactNode
+  loading: boolean
 }
 
 const Wrapper = styled.div`
-  display: contents;
-  & .ant-btn-primary {
-    background: ${theme.blue2};
-
-    box-shadow: 0px 0px 12px rgba(28, 86, 225, 0.51);
-    font-size: 16px;
-    line-height: 30px;
-    font-weight: 700;
+  .button {
+    transition: all 0.2s ease;
   }
 
-  & .ant-btn-link {
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .button:active {
+    transform: translateY(1px);
     box-shadow: none;
-    background: transparent;
-    color: ${theme.blue2};
   }
 `
-const StyledButton = styled(Button)`
-  ${({ typography }: ButtonProps) => {
-    if (typography) {
-      return typography
-    }
-  }}
-  &[disabled] {
-    background-color: ${theme.secondaryLight};
-    border: none;
-    box-shadow: none !important;
-    color: ${theme.base};
+const DefaultButton = styled(Button)`
+  background-color: #fafbfc;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #24292e !important;
   }
-  border-color: ${({ bordercolor }: ButtonProps) => {
-    return bordercolor ? bordercolor : "none"
-  }};
+`
+const PrimaryButton = styled(Button)`
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
 
-  border-radius: ${({ borderradius, noradius }: ButtonProps) => {
-    return noradius ? "none" : borderradius ? borderradius : "100px"
-  }};
-  margin: ${({ margin }: ButtonProps) => {
-    return margin && margin
-  }};
-  padding: ${({ type, padding }: ButtonProps) => {
-    if (padding) {
-      return `${padding} !important`
-    }
-    switch (type) {
-      case "primary":
-        return "0px 36px 0px 37px"
-      default:
-        return "0px 36px 0px 37px"
-    }
-  }};
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #fff !important;
+  }
+`
+const SuccessButton = styled(Button)`
+  background-color: #2ea44f;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
 
-  background: ${({ background }: ButtonProps) => {
-    return background ? background : theme.blue2
-  }};
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #fff !important;
+  }
+`
+const WarningButton = styled(Button)`
+  background-color: #fa6400;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
 
-  color: ${({ color }: ButtonProps) => {
-    return color ? `${color} !important` : theme.base
-  }};
-  font-size: ${({ fontSize }: ButtonProps) => {
-    return fontSize && fontSize
-  }};
-  font-weight: ${({ bold }: ButtonProps) => {
-    return bold && "bold"
-  }};
-  min-width: ${({ minwidth }: ButtonProps) => {
-    return minwidth && `${minwidth}px`
-  }};
-  width: ${({ width }: ButtonProps) => {
-    return width && `${width}`
-  }};
-  min-height: ${({ minheight }: ButtonProps) => {
-    return minheight && `${minheight}px`
-  }};
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #fff !important;
+  }
+`
+const DangerButton = styled(Button)`
+  background-color: #e63946;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
 
-  &:hover {
-    border-color: ${({ bordercolor }: ButtonProps) => {
-      return bordercolor ? bordercolor : "none"
-    }};
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #fff !important;
+  }
+`
+const InfoButton = styled(Button)`
+  background-color: #0095ff;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+    color: #fff !important;
   }
 `
 
+const getButton = (
+  type: string,
+  action: any,
+  chidren: React.ReactNode,
+  loading: boolean
+) => {
+  switch (type) {
+    case "primary":
+      return (
+        <PrimaryButton
+          onClick={action}
+          loading={loading}
+          className={"button button-primary"}
+        >
+          {chidren}
+        </PrimaryButton>
+      )
+    case "success":
+      return (
+        <SuccessButton
+          onClick={action}
+          loading={loading}
+          className={"button button-success"}
+        >
+          {chidren}
+        </SuccessButton>
+      )
+    case "warning":
+      return (
+        <WarningButton
+          onClick={action}
+          loading={loading}
+          className={"button button-warning"}
+        >
+          {chidren}
+        </WarningButton>
+      )
+    case "danger":
+      return (
+        <DangerButton
+          onClick={action}
+          loading={loading}
+          className={"button button-danger"}
+        >
+          {chidren}
+        </DangerButton>
+      )
+    case "info":
+      return (
+        <InfoButton
+          onClick={action}
+          loading={loading}
+          className={"button button-info"}
+        >
+          {chidren}
+        </InfoButton>
+      )
+    default:
+      return (
+        <DefaultButton
+          onClick={action}
+          loading={loading}
+          className={"button button-default"}
+        >
+          {chidren}
+        </DefaultButton>
+      )
+  }
+}
 export const ButtonComponent: React.FC<ButtonProps> = ({
   children,
-  htmlType,
-  loading,
+  type,
   onClick,
-  ...rest
+  loading,
 }) => {
-  return (
-    <Wrapper {...rest}>
-      <StyledButton
-        onClick={onClick}
-        htmlType={htmlType}
-        loading={loading}
-        {...rest}
-      >
-        {children}
-      </StyledButton>
-    </Wrapper>
-  )
+  const button = getButton(type, onClick, children, loading)
+
+  return <Wrapper>{button}</Wrapper>
 }

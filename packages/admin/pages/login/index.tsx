@@ -173,7 +173,7 @@ const LoginPage: React.FC = () => {
                   width={"340px"}
                 />
               </InputFieldWrapper>
-              <StyledButton htmlType={"submit"} loading={loading}>
+              <StyledButton type={"success"} loading={loading}>
                 {t("Login")}
               </StyledButton>
             </form>

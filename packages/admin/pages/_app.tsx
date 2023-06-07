@@ -1,9 +1,8 @@
 import Head from "next/head"
 import * as Sentry from "@sentry/node"
 import { AppProps } from "next/app"
-import { useRouter } from "next/router"
-import { analytics, auth, LanguageOption } from "@project/shared"
-import { useEffect, useState } from "react"
+import { auth, LanguageOption } from "@project/shared"
+import { useCallback, useEffect, useState } from "react"
 import { signOut, onAuthStateChanged } from "firebase/auth"
 import { message } from "antd"
 import { CloseCircleFilled } from "@ant-design/icons"
@@ -11,7 +10,6 @@ import { useTranslation } from "react-i18next"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { GlobalStyles, AuthProvider } from "../utils"
 import "../utils/css-imports"
-import { logEvent, setCurrentScreen } from "firebase/analytics"
 
 const queryClient = new QueryClient({ defaultOptions: {} })
 
@@ -24,35 +22,12 @@ if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
 }
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const routers = useRouter()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
   const [isOwner, setIsOwner] = useState(false)
   const { t } = useTranslation()
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      const logAnalyticsEvent = (url: string) => {
-        setCurrentScreen(analytics, url)
-        logEvent(analytics, "screen_view", {
-          firebase_screen: url,
-          firebase_screen_class: "skeleton-owner",
-        })
-      }
-
-      routers.events.on("routeChangeComplete", (url) => {
-        window.scrollTo(0, 0)
-        logAnalyticsEvent(url)
-      })
-
-      logAnalyticsEvent(window.location.pathname)
-      return () => {
-        routers.events.off("routeChangeComplete", logAnalyticsEvent)
-      }
-    }
-  }, [])
-
-  const initialLoad = () => {
+  const initialLoad = useCallback(() => {
     onAuthStateChanged(auth, async (user) => {
       try {
         if (user !== null) {
@@ -80,7 +55,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         })
       }
     })
-  }
+  }, [])
 
   useEffect(() => {
     initialLoad()
