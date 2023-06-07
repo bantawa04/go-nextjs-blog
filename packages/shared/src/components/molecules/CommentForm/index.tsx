@@ -70,8 +70,14 @@ const CommentForm: React.FC = () => {
           />
         </div>
         <div className={"buttonsWrapper"}>
-          <Button size={"large"}>{"Cancel"}</Button>
-          <Button type={"primary"} size={"large"}>
+          <Button size={"large"} style={{ borderRadius: "0px" }}>
+            {"Cancel"}
+          </Button>
+          <Button
+            type={"primary"}
+            style={{ borderRadius: "0px" }}
+            size={"large"}
+          >
             {"Submit"}
           </Button>
         </div>

@@ -1,6 +1,6 @@
 import { CommentForm, FeaturedPost } from "@project/shared"
 import { Tag } from "antd"
-import React from "react"
+import React, { useRef } from "react"
 import styled from "styled-components"
 
 interface IContainer {
@@ -14,6 +14,9 @@ const Container = styled.section`
 const PostContentWrapper = styled.article`
   padding-top: 80px;
   width: 60%;
+  p {
+    line-height: 32px;
+  }
 `
 const TagsWrapper = styled.div`
   margin-top: 80px;
@@ -21,10 +24,18 @@ const TagsWrapper = styled.div`
 `
 
 const SinglePost: React.FC<IContainer> = () => {
+  const contentRef = useRef(null)
+
+  const handleClick = () => {
+    contentRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
   return (
     <>
-      <FeaturedPost />
-      <Container>
+      <FeaturedPost onClick={handleClick} />
+      <Container id={"content"} ref={contentRef}>
         <PostContentWrapper>
           <p>
             {

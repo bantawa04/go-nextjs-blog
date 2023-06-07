@@ -1,5 +1,6 @@
 import {
   ClockCircleOutlined,
+  DownOutlined,
   FacebookOutlined,
   MessageOutlined,
   TwitterOutlined,
@@ -8,6 +9,9 @@ import React from "react"
 import styled from "styled-components"
 import Link from "next/link"
 
+interface IFeaturedPost {
+  onClick?: () => void
+}
 const FeaturedPostWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -101,9 +105,32 @@ const FeaturedPostWrapper = styled.div`
       }
     }
   }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .scrollDown {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      margin-top: 75px;
+      font-size: 2rem;
+      color: #fff;
+      animation: bounce 1s infinite;
+    }
+  }
 `
 
-const FeaturedPost: React.FC = () => {
+const FeaturedPost: React.FC<IFeaturedPost> = ({ onClick }) => {
   return (
     <FeaturedPostWrapper>
       <div className={"overlay"}></div>
@@ -146,7 +173,11 @@ const FeaturedPost: React.FC = () => {
               <span>{"3 min read"}</span>
             </div>
           </div>
-          <div className={"scrollDown"}></div>
+          {onClick ? (
+            <div className={"scrollDown"} onClick={onClick}>
+              <DownOutlined />
+            </div>
+          ) : null}
         </div>
       </div>
     </FeaturedPostWrapper>
