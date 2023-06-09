@@ -1,6 +1,5 @@
 import Head from "next/head"
 import { Button, auth } from "@project/shared"
-import { theme } from "@project/shared/src/theme"
 import styled from "styled-components"
 import PrivateRoute from "../withPrivateRoute"
 import { signOut } from "firebase/auth"
@@ -28,12 +27,7 @@ function Home() {
       </Head>
       <Container>
         <h1 className={"title"}>{"Home Page"}</h1>
-        <Button
-          minheight={40}
-          fontSize={"16px"}
-          bordercolor={theme.alert}
-          onClick={handleSignOut}
-        >
+        <Button type={"warning"} onClick={handleSignOut}>
           {"Log Out"}
         </Button>
       </Container>

@@ -6,7 +6,7 @@ export interface ButtonProps {
   onClick?: any
   type: "primary" | "success" | "warning" | "danger" | "info"
   children: React.ReactNode
-  loading: boolean
+  loading?: boolean
 }
 
 const Wrapper = styled.div`
