@@ -3,6 +3,7 @@ import Router from "next/router"
 import { Spin } from "antd"
 import styled from "styled-components"
 import { AuthContext } from "./utils/AuthContext"
+import { AdminNav } from "@project/shared"
 
 const LoaderWrapper = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const PrivateRoute = (AuthComponent) => {
     render() {
       return (
         <PrivateComponent>
+          <AdminNav />
           <AuthComponent {...this.props} />
         </PrivateComponent>
       )
