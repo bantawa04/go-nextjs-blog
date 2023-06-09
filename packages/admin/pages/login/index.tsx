@@ -46,22 +46,6 @@ const TextFieldWrapper = styled.div`
   margin-top: 35px;
 `
 
-const StyledButton = styled(Button)`
-  margin: auto;
-  height: 40px;
-  margin-bottom: 30px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
-  color: #ffffff;
-  border-radius: 5px;
-  display: flex;
-  width: 96px;
-  align-items: center;
-  justify-content: center;
-`
-
 const InputFieldWrapper = styled.div`
   margin-bottom: 25px;
 `
@@ -99,7 +83,6 @@ const LoginPage: React.FC = () => {
         formik.values.email,
         formik.values.password
       )
-
       if (!data || !data.user || !auth.currentUser) {
         return
       }
@@ -145,38 +128,40 @@ const LoginPage: React.FC = () => {
       <Container>
         <LoginWrapper>
           <TextFieldWrapper>
-            <form onSubmit={formik.handleSubmit}>
-              <InputFieldWrapper>
-                <TextField
-                  name={"email"}
-                  error={formik.touched.email && formik.errors.email}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  label={t("Email")}
-                  placeholder={t("Email")}
-                  className={"text-field"}
-                  height={"40px"}
-                  width={"340px"}
-                />
-              </InputFieldWrapper>
-              <InputFieldWrapper>
-                <TextField
-                  name={"password"}
-                  type={"password"}
-                  error={formik.touched.password && formik.errors.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  label={t("Password")}
-                  placeholder={t("Password")}
-                  className={"text-field"}
-                  height={"40px"}
-                  width={"340px"}
-                />
-              </InputFieldWrapper>
-              <StyledButton type={"success"} loading={loading}>
-                {t("Login")}
-              </StyledButton>
-            </form>
+            <InputFieldWrapper>
+              <TextField
+                name={"email"}
+                error={formik.touched.email && formik.errors.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                label={t("Email")}
+                placeholder={t("Email")}
+                className={"text-field"}
+                height={"40px"}
+                width={"340px"}
+              />
+            </InputFieldWrapper>
+            <InputFieldWrapper>
+              <TextField
+                name={"password"}
+                type={"password"}
+                error={formik.touched.password && formik.errors.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                label={t("Password")}
+                placeholder={t("Password")}
+                className={"text-field"}
+                height={"40px"}
+                width={"340px"}
+              />
+            </InputFieldWrapper>
+            <Button
+              type={"success"}
+              loading={loading}
+              onClick={formik.handleSubmit}
+            >
+              {t("Login")}
+            </Button>
           </TextFieldWrapper>
         </LoginWrapper>
       </Container>

@@ -3,7 +3,7 @@ import * as Sentry from "@sentry/node"
 import { AppProps } from "next/app"
 import { auth, LanguageOption } from "@project/shared"
 import { useCallback, useEffect, useState } from "react"
-import { signOut, onAuthStateChanged } from "firebase/auth"
+import { onAuthStateChanged } from "firebase/auth"
 import { message } from "antd"
 import { CloseCircleFilled } from "@ant-design/icons"
 import { useTranslation } from "react-i18next"
@@ -31,19 +31,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     onAuthStateChanged(auth, async (user) => {
       try {
         if (user !== null) {
-          const idToken = await user!.getIdTokenResult()
-          if (idToken.claims["role"] === "skeleton-owner") {
-            setUser(user)
-            setIsOwner(true)
-          } else {
-            signOut(auth)
-            setUser(null)
-            message.error({
-              key: "01",
-              icon: <CloseCircleFilled onClick={() => message.destroy("01")} />,
-              content: t("Unauthorized user"),
-            })
-          }
+          setUser(user)
+          setIsOwner(true)
         }
         setLoading(false)
       } catch (error) {

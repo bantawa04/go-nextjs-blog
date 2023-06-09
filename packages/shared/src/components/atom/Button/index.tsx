@@ -3,7 +3,7 @@ import { Button } from "antd"
 
 export interface ButtonProps {
   // eslint-disable-next-line no-unused-vars
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: any
   type: "primary" | "success" | "warning" | "danger" | "info"
   children: React.ReactNode
   loading: boolean
