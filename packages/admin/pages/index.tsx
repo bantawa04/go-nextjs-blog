@@ -1,35 +1,85 @@
 import Head from "next/head"
-import { Button, auth } from "@project/shared"
 import styled from "styled-components"
 import PrivateRoute from "../withPrivateRoute"
-import { signOut } from "firebase/auth"
-import { useContext } from "react"
-import { AuthContext } from "../utils/AuthContext"
+import { Space, Tag } from "antd"
+import { Header, TableComponent } from "../components"
 
 const Container = styled.section`
   padding: 2rem 2.5rem;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 `
 
 function Home() {
-  const { setUser } = useContext(AuthContext)
-
-  const handleSignOut = () => {
-    signOut(auth)
-    setUser(null)
-  }
-
+  const columns = [
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Cateogry",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Tags",
+      key: "tags",
+      dataIndex: "tags",
+      render: (_, { tags }) => (
+        <>
+          {tags.map((tag) => {
+            let color = tag.length > 5 ? "geekblue" : "green"
+            if (tag === "loser") {
+              color = "volcano"
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            )
+          })}
+        </>
+      ),
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Space size={"middle"}>
+          <a>
+            {"Invite "}
+            {record.name}
+          </a>
+          <a>{"Delete"}</a>
+        </Space>
+      ),
+    },
+  ]
+  const data = [
+    {
+      key: "1",
+      title: "John Brown",
+      category: "react",
+      status: 1,
+      tags: ["nice", "developer"],
+    },
+  ]
   return (
     <>
       <Head>
         <title>{"HomePage | Next Owner Skeleton"}</title>
       </Head>
       <Container>
-        <h1 className={"title"}>{"Home Page"}</h1>
-        <Button type={"warning"} onClick={handleSignOut}>
-          {"Log Out"}
-        </Button>
+        <Header />
+        <TableComponent columns={columns} data={data} />
       </Container>
     </>
   )
