@@ -16,15 +16,13 @@ const AdminNav: React.FC = () => {
   const { setUser } = useContext(AuthContext)
   const [current, setCurrent] = useState("1")
   const router = useRouter()
-  const onClick: MenuProps["onClick"] = (e) => {
-    setCurrent(e.key)
-  }
   const items: MenuProps["items"] = [
     {
       label: "Post",
       key: "1",
       icon: <FileTextOutlined />,
       onClick: () => {
+        setCurrent("1")
         router.push("/")
       },
     },
@@ -33,6 +31,7 @@ const AdminNav: React.FC = () => {
       key: "2",
       icon: <BranchesOutlined />,
       onClick: () => {
+        setCurrent("2")
         router.push("/category")
       },
     },
@@ -41,6 +40,7 @@ const AdminNav: React.FC = () => {
       key: "3",
       icon: <TagOutlined />,
       onClick: () => {
+        setCurrent("3")
         router.push("/tags")
       },
     },
@@ -55,14 +55,7 @@ const AdminNav: React.FC = () => {
     },
   ]
 
-  return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode={"horizontal"}
-      items={items}
-    />
-  )
+  return <Menu selectedKeys={[current]} mode={"horizontal"} items={items} />
 }
 
 export { AdminNav }
