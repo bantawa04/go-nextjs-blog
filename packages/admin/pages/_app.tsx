@@ -47,6 +47,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     initialLoad()
+    return () => {
+      setLoading(true)
+      setUser(null)
+      setIsOwner(false)
+    }
   }, [])
 
   return (
