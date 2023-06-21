@@ -4,6 +4,7 @@ import { Spin } from "antd"
 import styled from "styled-components"
 import { AuthContext } from "./utils/AuthContext"
 import { AdminNav } from "@project/shared"
+import Head from "next/head"
 
 const LoaderWrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const LoaderWrapper = styled.div`
   margin-top: 40px;
 `
 
-const PrivateRoute = (AuthComponent) => {
+const PrivateRoute = (AuthComponent, title = "Admin") => {
   function PrivateComponent({ children }) {
     const { authenticated, loading, user } = useContext(AuthContext)
 
@@ -42,10 +43,15 @@ const PrivateRoute = (AuthComponent) => {
   return class Higher extends React.Component {
     render() {
       return (
-        <PrivateComponent>
-          <AdminNav />
-          <AuthComponent {...this.props} />
-        </PrivateComponent>
+        <>
+          <Head>
+            <title>{title}</title>
+          </Head>
+          <PrivateComponent>
+            <AdminNav />
+            <AuthComponent {...this.props} />
+          </PrivateComponent>
+        </>
       )
     }
   }

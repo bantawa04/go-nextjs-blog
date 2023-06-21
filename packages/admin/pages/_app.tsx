@@ -1,4 +1,3 @@
-import Head from "next/head"
 import * as Sentry from "@sentry/node"
 import { AppProps } from "next/app"
 import { auth, LanguageOption } from "@project/shared"
@@ -52,9 +51,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <Head>
-        <title>{"Owner"}</title>
-      </Head>
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
         <AuthProvider

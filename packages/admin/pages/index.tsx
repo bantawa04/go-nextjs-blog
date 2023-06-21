@@ -1,4 +1,3 @@
-import Head from "next/head"
 import styled from "styled-components"
 import PrivateRoute from "../withPrivateRoute"
 import { Space, Tag } from "antd"
@@ -74,9 +73,6 @@ function Home() {
   ]
   return (
     <>
-      <Head>
-        <title>{"HomePage | Next Owner Skeleton"}</title>
-      </Head>
       <Container>
         <Header />
         <TableComponent columns={columns} data={data} />
@@ -85,4 +81,4 @@ function Home() {
   )
 }
 
-export default PrivateRoute(Home)
+export default PrivateRoute(Home, "Posts")
